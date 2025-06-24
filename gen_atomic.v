@@ -96,10 +96,19 @@ fn fix_objdump_asm(src []string, f string) []string {
 				break
 			}
 			mut addr := s[pos2..pos1].trim_space()
-			if addr.len == 1 {
-				addr = '0' + addr
-			} else if addr.len > 2 {
-				panic('error! addr len > 2 : ${f} ${s} addr=${addr}')
+			match addr.len {
+				1 {
+					addr = '00' + addr
+				}
+				2 {
+					addr = '0' + addr
+				}
+				3 {
+					addr = addr
+				}
+				else {
+					panic('error! addr len > 3 : ${f} ${s} addr=${addr}')
+				}
 			}
 			result1 << s[..pos2] + ' .L_${f}_${addr}'
 			labels[addr] = true // Mark as found label
@@ -116,8 +125,19 @@ fn fix_objdump_asm(src []string, f string) []string {
 	for s in result1 {
 		mut addr := s.all_before(':').trim_space()
 		// Insert label definition if it matches
-		if addr.len == 1 {
-			addr = '0' + addr
+		match addr.len {
+			1 {
+				addr = '00' + addr
+			}
+			2 {
+				addr = '0' + addr
+			}
+			3 {
+				addr = addr
+			}
+			else {
+				panic('error! addr len > 3 : ${f} ${s} addr=${addr}')
+			}
 		}
 		if all_labels.len > 0 {
 			l = all_labels[0]
