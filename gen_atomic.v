@@ -129,6 +129,9 @@ fn fix_objdump_asm(src []string, f string) []string {
 		}
 		result2 << s
 	}
+	if all_labels.len > 0 {
+		println('Error! lables not found for ${f}: ${all_labels}')
+	}
 	return result2
 }
 
