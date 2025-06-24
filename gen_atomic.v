@@ -12,19 +12,19 @@ const funcs_4 = [
 	'__atomic_load',
 	'__atomic_store',
 	'__atomic_compare_exchange',
-	'__atomic_exchange',
-	'__atomic_fetch_add',
-	'__atomic_add_fetch',
-	'__atomic_fetch_sub',
-	'__atomic_sub_fetch',
-	'__atomic_fetch_and',
-	'__atomic_and_fetch',
-	'__atomic_fetch_or',
-	'__atomic_or_fetch',
-	'__atomic_fetch_nand',
-	'__atomic_nand_fetch',
-	'__atomic_fetch_xor',
-	'__atomic_xor_fetch',
+//	'__atomic_exchange',
+//	'__atomic_fetch_add',
+//	'__atomic_add_fetch',
+//	'__atomic_fetch_sub',
+//	'__atomic_sub_fetch',
+//	'__atomic_fetch_and',
+//	'__atomic_and_fetch',
+//	'__atomic_fetch_or',
+//	'__atomic_or_fetch',
+//	'__atomic_fetch_nand',
+//	'__atomic_nand_fetch',
+//	'__atomic_fetch_xor',
+//	'__atomic_xor_fetch',
 	'__atomic_test_and_set',
 ]
 
@@ -132,7 +132,7 @@ fn fix_objdump_asm(src []string, f string) []string {
 			2 {
 				addr = '0' + addr
 			}
-			3 {
+			3 {	
 				addr = addr
 			}
 			else {
